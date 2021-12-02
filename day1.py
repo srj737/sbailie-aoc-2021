@@ -10,7 +10,7 @@ for val in lines:
         count += 1
     prev = val
 
-print("Test Input (7): " + str(count))
+print("Part 1 Test Input (7): " + str(count))
 
 ###################################
 
@@ -27,7 +27,7 @@ for val in lines:
     prev = val
 
 
-print("Test Input (1228): " + str(count))
+print("Part 1 Real Input (1228): " + str(count))
 
 ###################################
 
@@ -44,7 +44,7 @@ for i in range(1, len(lines) - 2):
         count += 1
     prev = val
 
-print("Test Input (5): " + str(count))
+print("Part 2 Test Input (5): " + str(count))
 
 ###################################
 
@@ -61,4 +61,4 @@ for i in range(1, len(lines) - 2):
         count += 1
     prev = val
 
-print("Test Input (1257): " + str(count))
+print("Part 2 Real Input (1257): " + str(count))
