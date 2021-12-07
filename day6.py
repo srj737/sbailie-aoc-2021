@@ -1,27 +1,22 @@
 def ingestListOfIntOnOneLine(filename):
-    result = []
     with open(filename) as file:
-        lines = file.readlines()
-    numbers = [int(i) for i in lines[0].split(',')]
-    return numbers
+        line = file.readlines()[0]
+    fishes = [int(i) for i in line.split(',')]
+    school = [0] * 9
+    for fish in fishes:
+        school[fish] += 1
+    return school
 
 
 def simulateFish(school, days):
+    # school is a list:
+    # [ 0val, 1val, 2val, 3val, 4val, 5val, 6val, 7val, 8val]
+    # [ 1val, 2val, 3val, 4val, 5val, 6val, 7val + 0val, 8val, 0val]
     for day in range(days):
-        fish_to_add = 0
-        for index, fish in enumerate(school):
-            if fish == 0:
-                fish = 6
-                school[index] = 6
-                fish_to_add += 1
-            else:
-                fish += -1
-                school[index] += -1
-        for new_fish in range(fish_to_add):
-            school.append(8)
-        if day % 25 == 0:
-            print("Loading: " + str(day) + '/' + str(days) + ' days... (Size: ' + str(len(school)) + ')')
-    return len(school)
+        zero_value_fish = school.pop(0)
+        school[6] += zero_value_fish
+        school.append(zero_value_fish)
+    return sum(school)
 
 
 ###########################################
@@ -50,6 +45,6 @@ print("Part 2 Test Input (256 Days: 26984457539): " + str(fish_count))
 
 fish_school = ingestListOfIntOnOneLine('inputs/6-1')
 fish_count = simulateFish(fish_school, 256)
-print("Part 2 Real Input (256 Days: X): " + str(fish_count))
+print("Part 2 Real Input (256 Days: 1681503251694): " + str(fish_count))
 
 ###########################################
